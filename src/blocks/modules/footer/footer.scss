@@ -10,13 +10,18 @@
   .wrapper {
     flex-basis: calc((100% - 180px) / 4);
     margin-right: 60px;
+    display: flex;
+    align-items: center;
   }
 
   .logo-wrapper {
     width: 100px;
     height: 40px;
+    display: block;
 
     overflow: hidden;
+
+    text-decoration: none;
 
     img {
       width: 100%;

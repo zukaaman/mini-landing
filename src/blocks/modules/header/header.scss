@@ -16,8 +16,11 @@
   .logo-wrapper {
     width: 100px;
     height: 45px;
+    display: block;
 
     overflow: hidden;
+
+    text-decoration: none;
 
     img {
       width: 100%;
