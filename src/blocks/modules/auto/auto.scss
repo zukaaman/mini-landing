@@ -5,6 +5,10 @@
     padding-top: 70px;
   }
 
+  .container {
+    position: relative;
+  }
+
   .auto__title {
     font-weight: 700;
     font-size: 36px;
@@ -20,9 +24,21 @@
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
+    max-height: 1800px;
+
+    overflow: hidden;
+
+    &.auto-list--open {
+      max-height: none;
+    }
+
+    @include m-900 {
+      max-height: 3600px;
+    }
 
     @include m-600 {
       margin-top: 10px;
+      max-height: 2000px;
     }
 
     .auto-list__item {
@@ -32,6 +48,13 @@
       margin-right: 60px;
       margin-top: 50px;
       height: 400px;
+
+      &.auto-list__item--remove {
+        position: absolute;
+
+        display: none;
+        order: 1;
+      }
 
       @include m-900 {
         width: 100%;
@@ -74,37 +97,7 @@
       font-size: 18px;
       line-height: 150.02%;
       color: #272727;
-
-      // @include m-600 {
-
-      // }
     }
-
-    // .auto-list__tag {
-    //   position: absolute;
-    //   top: 0;
-
-    //   width: 90px;
-    //   height: 30px;
-    //   display: none;
-    //   align-items: center;
-    //   justify-content: center;
-    //   margin-top: 15px;
-
-    //   background: #F7F7F7;
-
-    //   font-weight: 500;
-    //   font-size: 14px;
-    //   line-height: 150.02%;
-    //   color: #272727;
-
-    //   @include m-600 {
-    //     width: 70px;
-    //     height: 25px;
-
-    //     font-size: 10px;
-    //   }
-    // }
 
     .tag-list {
       position: absolute;
@@ -145,105 +138,111 @@
         }
       }
     }
+  }
 
-    .auto-list__btn {
-      position: relative;
+  .auto-list__btn {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 10;
 
-      width: 100%;
-      height: 360px;
+    height: 360px;
+    width: calc((100% - 60px) / 2);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
 
-      background: #F2F2F2;
+    background: #F2F2F2;
+    border-bottom: 40px solid #ffffff;
+    box-sizing: content-box;
 
-      @include m-900 {
+    @include m-1230 {
+      right: 15px;
 
-      }
+      width: calc(((100% - 60px) / 2) - 15px);
+    }
+
+    @include m-900 {
+      width: calc(100% - 30px);
+    }
+
+    &.auto-list__btn--remove {
+      display: none;
+    }
+
+    @include m-600 {
+      height: 180px;
+    }
+
+    span {
+      position: absolute;
+      top: calc((100% - 2px) / 2);
+      left: calc((100% - 30px) / 2);
+
+      width: 30px;
+      height: 2px;
+
+      background-color: #0015CE;
 
       @include m-600 {
-        height: 180px;
+        left: calc((100% - 20px) / 2);
+
+        width: 20px;
       }
 
-      span {
-        position: relative;
+      &::after {
+        content: "";
+        position: absolute;
+        top: -14px;
+        left: calc((100% - 2px) / 2);
 
-        width: 30px;
+        width: 2px;
         height: 30px;
+        display: block;
+
+        background-color: #0015CE;
 
         @include m-600 {
-          width: 20px;
+          top: calc((100% - 20px) / 2);
+
           height: 20px;
         }
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: calc((100% - 2px) / 2);
-          left: calc((100% - 30px) / 2);
-
-          width: 30px;
-          height: 2px;
-          display: block;
-
-          background-color: #0015CE;
-
-          @include m-600 {
-            left: calc((100% - 20px) / 2);
-
-            width: 20px;
-          }
-        }
-
-        &::after {
-          content: "";
-          position: absolute;
-          top: -14px;
-          left: calc((100% - 2px) / 2);
-
-          width: 2px;
-          height: 30px;
-          display: block;
-
-          background-color: #0015CE;
-
-          @include m-600 {
-            top: calc((100% - 20px) / 2);
-
-            height: 20px;
-          }
-        }
       }
+    }
 
-      .auto-list__number {
-        position: absolute;
-        top: 40px;
-        left: 50%;
+    .auto-list__number {
+      position: absolute;
+      top: 40px;
+      left: 50%;
 
-        font-weight: 400;
-        font-size: 20px;
-        line-height: 150.02%;
-        color: #838383;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 150.02%;
+      color: #838383;
 
-        transform: translateX(-50%);
+      transform: translateX(-50%);
 
-        @include m-600 {
-          top: 20px;
+      @include m-600 {
+        top: 20px;
 
-          font-size: 12px;
-        }
+        font-size: 12px;
       }
+    }
 
-      .auto-list__btn-text {
-        margin-top: 25px;
+    .auto-list__btn-text {
+      padding-top: 25px;
+      display: flex;
+      height: 50%;
 
-        font-weight: 500;
-        font-size: 20px;
-        line-height: 150.02%;
-        color: #0015CE;
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 150.02%;
+      color: #0015CE;
 
-        @include m-600 {
-          margin-top: 15px;
+      @include m-600 {
+        padding-top: 15px;
 
-          font-size: 16px;
-        }
+        font-size: 16px;
       }
     }
   }

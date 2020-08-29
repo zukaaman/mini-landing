@@ -1,13 +1,12 @@
-modules.define('auto', ['i-bem-dom'], function(provide, bemDom) {
+// for auto
 
-provide(bemDom.declBlock(this.name, {
-    onSetMod: {
-        js: {
-            inited: function() {
-                
-            }
-        }
-    }
-}));
+document.addEventListener("DOMContentLoaded", function(event) {
+  let autoBtn = document.querySelector('.auto-list__btn'),
+      autoList = document.querySelector('.auto-list');
 
+  autoBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    autoList.classList.add('auto-list--open');
+    autoBtn.classList.add('auto-list__btn--remove');
+  })
 });
