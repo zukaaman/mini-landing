@@ -1,5 +1,4 @@
 // for auto
-
 document.addEventListener("DOMContentLoaded", function(event) {
   let autoBtn = document.querySelector('.auto-list__btn'),
       autoList = document.querySelector('.auto-list');

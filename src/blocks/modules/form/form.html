@@ -3,15 +3,15 @@
     <div class="img-wrapper">
       <img src="img/form-img.jpg" alt="#">
     </div>
-    <form class="form-form">
+    <form class="form-form" method="post" action="javascript:void(null);" onsubmit="mailform()">
       <h2 class="form__title">Оставьте заявку<br> на продажу автомобиля:</h2>
       <p class="form-form__text">Введите информацию о Вашем авто:</p>
-      <input class="form-form__input" type="text" placeholder="Марка" required>
-      <input class="form-form__input" type="text" placeholder="Модель" required>
-      <input class="form-form__input" type="number" min="1970" placeholder="Год выпуска" required>
-      <input class="form-form__input" type="number" min="0" placeholder="Пробег" required>
-      <input class="form-form__input" type="number" min="1" placeholder="Ваша цена" required>
-      <input class="form-form__input" type="tel" placeholder="Ваш номер телефона" required>
+      <input class="form-form__input" name="car-mark" type="text" placeholder="Марка" required>
+      <input class="form-form__input" name="car-model" type="text" placeholder="Модель" required>
+      <input class="form-form__input" name="car-year" type="number" min="1900" placeholder="Год выпуска" required>
+      <input class="form-form__input" name="car-mileage" type="number" min="0" placeholder="Пробег" required>
+      <input class="form-form__input" name="car-price" type="number" min="0" placeholder="Ваша цена" required>
+      <input class="form-form__input" name="phone" type="tel" placeholder="Ваш номер телефона" required>
       <button class="form-form__btn" type="submit">Отправить</button>
     </form>
   </div>

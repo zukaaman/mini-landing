@@ -1,5 +1,4 @@
-// for form
-
+// for tel-mask
 window.addEventListener("DOMContentLoaded", function() {
   function setCursorPosition(pos, elem) {
     elem.focus();
@@ -14,7 +13,7 @@ window.addEventListener("DOMContentLoaded", function() {
   };
 
   function mask(event) {
-    var matrix = "+7 (___) ___ ____",
+    var matrix = "+7 (___) ___-__-__",
       i = 0,
       def = matrix.replace(/\D/g, ""),
       val = this.value.replace(/\D/g, "");
@@ -32,3 +31,23 @@ window.addEventListener("DOMContentLoaded", function() {
       input.addEventListener("focus", mask, false);
       input.addEventListener("blur", mask, false);
 });
+
+// for form
+function mailform() {
+  var msg = jQuery('.form-form').serialize();
+  jQuery.ajax({
+    method: 'POST',
+    url: 'php/mail.php',
+    data: msg,
+    cache: false,
+    success: function success(html) {
+      $(".modal").addClass("modal--active");
+      $(".modal-overlay").addClass("modal-overlay--active");
+      setTimeout(function () {
+        $(".modal").removeClass("modal--active");
+        $(".modal-overlay").removeClass("modal-overlay--active");
+        $(".form-form")[0].reset();
+      }, 3000);
+    }
+  });
+}
